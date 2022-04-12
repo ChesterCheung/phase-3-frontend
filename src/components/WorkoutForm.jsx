@@ -6,4 +6,4 @@ const WorkoutForm = () => {
   )
 }
 
-export default WorkoutFOrm
+export default WorkoutForm
