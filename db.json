@@ -1,0 +1,16 @@
+{
+"workouts": [
+    {
+        "id": 1,
+        "name": "Bench Press",
+        "muscle": "Chest",
+        "description": "Using bar, push weight up from chest"
+    },
+    {
+        "id": 2,
+        "name": "Push-up",
+        "muscle": "Chest",
+        "description": "With hands at shoulder width, push up from floor"
+    }
+]
+}
