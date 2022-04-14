@@ -10,19 +10,20 @@ import { baseURL } from "./Globals";
 
 const App = () => {
 
-const [workout, setWorkout] = useState()
+const [workout, setWorkout] = useState([])
 
 useEffect(()=> {
   fetch(baseURL + "/workouts")
-})
-
+  .then(resp => resp.json())
+  .then(data => setWorkout(data))
+},[])
   return (
       <Router>
         <Navbar/>
           <Routes>
             <Route path="/" element={<Home/>}></Route>
             <Route path="/workouts/new" element={<WorkoutForm/>}></Route>
-            <Route path="/workouts" element={<WorkoutContainer/>}></Route>
+            <Route path="/workouts" element={<WorkoutContainer workout={workout}/>}></Route>
           </Routes>
     </Router>
   );

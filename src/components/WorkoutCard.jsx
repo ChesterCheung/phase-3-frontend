@@ -53,12 +53,11 @@ const WorkoutCard = ({workout}) => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }}>
+                <ButtonBase variant="body2" style={{ cursor: 'pointer' }}>
                   Remove
-                </Typography>
+                </ButtonBase>
               </Grid>
             </Grid>
-            
           </Grid>
         </Grid>
       </Paper>
