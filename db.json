@@ -13,6 +13,13 @@
         "muscle": "Chest",
         "description": "With hands at shoulder width, push up from floor",
         "image": "https://image.shutterstock.com/z/stock-vector-man-doing-barbell-bench-press-chest-press-flat-vector-illustration-isolated-on-different-layers-1841766727.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Pull-up",
+        "muscle": "Back, Shoulders",
+        "description": "With palms facing forward and shoulder width apart, pull up on bar until head is over bar",
+        "image":"https://image.shutterstock.com/image-vector/man-doing-pull-ups-exercise-600w-1992470651.jpg"
     }
 ]
 }

@@ -9,14 +9,19 @@ import { baseURL } from "./Globals";
 
 
 const App = () => {
-
 const [workout, setWorkout] = useState([])
+
+const handleSubmit = (e) =>{
+  e.preventDefault()
+  
+}
 
 useEffect(()=> {
   fetch(baseURL + "/workouts")
   .then(resp => resp.json())
   .then(data => setWorkout(data))
 },[])
+
   return (
       <Router>
         <Navbar/>
