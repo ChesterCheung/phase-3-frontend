@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import WorkoutContainer from "./components/WorkoutContainer";
 import WorkoutForm from "./components/WorkoutForm";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useHistory } from "react";
 import { baseURL } from "./Globals";
 
 
@@ -34,6 +34,7 @@ const handleSubmit = (e) =>{
   .then(r => r.json())
   .then(console.log(formData))
 }
+
 
 useEffect(()=> {
   fetch(baseURL + "/workouts")
