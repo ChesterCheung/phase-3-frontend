@@ -1,39 +1,54 @@
-import React, {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import React from 'react';
 
-const WorkoutForm = () => {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        margin: theme.spacing(4),
-        width: '35ch',
-      },
-    },
-  }));
-  const classes = useStyles();
 
-  const [formData, setFormData] = useState({
-      name:'',
-      muscle:'',
-      image:'',
-      description:''
-  })
-
-  const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]:e.target.value})
-  }
-  console.log(formData)
+const WorkoutForm = ({formData, handleChange, handleSubmit}) => {
+  // const [formData, setFormData] = useState({
+  //     name:'',
+  //     muscle:'',
+  //     image:'',
+  //     description:''
+  // })
+  
+  // const handleChange = (e) => {
+  //   setFormData({...formData, [e.target.name]: e.target.value})
+  // }
+  
   return (
     <div>
-      <form className={classes.root} noValidate autoComplete="off">
-        <div><Typography variant="h6" className={classes.title}>Name</Typography><TextField onChange={handleChange} id="outlined-name"  variant="outlined" value={formData.name}/></div>
-        <div><Typography variant="h6" className={classes.title}>Muscle Group</Typography><TextField onChange={handleChange} id="outlined-muscle" variant="outlined" value={formData.muscle}/></div>
-        <div><Typography variant="h6" className={classes.title}>Image URL</Typography><TextField onChange={handleChange} id="outlined-ImageUrl" variant="outlined" value={formData.image}/></div>
-        <div><Typography variant="h6" className={classes.title}>Description</Typography><TextField onChange={handleChange} id="outlined-multiline-static" multiline rows={4} defaultValue="Describe it!" variant="outlined" value={formData.description}/></div>
+      <form onSubmit={handleSubmit}style={{display:"flex", flexDirection:"column", width:"400px", margin:"auto"}}>
+        <label>Name</label>
+        <input
+        type="text"
+        name="name"
+        aria-label="name"
+        value={formData.name}
+        onChange={handleChange}
+        ></input>
+        <label>Muscle</label>
+        <input
+        type="text"
+        name="muscle"
+        aria-label="muscle"
+        value={formData.muscle}
+        onChange={handleChange}
+        ></input>
+        <label>Image URL</label>
+        <input
+        name="image"
+        aria-label="image"
+        value={formData.image}
+        onChange={handleChange}
+        ></input>
+        <label>Description</label>
+        <input
+        type="text"
+        name="description"
+        aria-label="description"
+        value={formData.description}
+        onChange={handleChange}
+        ></input>
         <input type="submit" />
-      </form>    
+      </form> 
     </div>
   )
 }
