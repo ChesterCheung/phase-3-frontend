@@ -3,8 +3,8 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import WorkoutContainer from "./components/WorkoutContainer";
 import WorkoutForm from "./components/WorkoutForm";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import { useState, useEffect, useHistory } from "react";
+import {BrowserRouter as Router, Routes, Route, useNavigate} from "react-router-dom";
+import { useState, useEffect } from "react";
 import { baseURL } from "./Globals";
 
 
@@ -21,20 +21,16 @@ const handleChange = (e) => {
   setFormData({...formData, [e.target.name]: e.target.value})
   console.log(formData)
 }
-
-const handleSubmit = (e) =>{
-  e.preventDefault()
-  fetch(baseURL + "/workouts", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  })
-  .then(r => r.json())
-  .then(console.log(formData))
+const handleDelete = (workoutObj) =>{
+  fetch(`http://localhost:4000/workouts/${workoutObj.id}`,{
+    method: "DELETE"
+})
+.then(()=>{
+  const filteredWorkouts = workout.filter(exercise => exercise.id !== workoutObj.id)
+  setWorkout(filteredWorkouts)
+  console.log(filteredWorkouts)
+})
 }
-
 
 useEffect(()=> {
   fetch(baseURL + "/workouts")
@@ -47,10 +43,10 @@ useEffect(()=> {
         <Navbar/>
           <Routes>
             <Route path="/" element={<Home/>}></Route>
-            <Route path="/workouts/new" element={<WorkoutForm handleChange={handleChange} handleSubmit={handleSubmit} formData={formData}/>}></Route>
-            <Route path="/workouts" element={<WorkoutContainer workout={workout}/>}></Route>
+            <Route path="/workouts/new" element={<WorkoutForm handleChange={handleChange} baseURL={baseURL} formData={formData}/>}></Route>
+            <Route path="/workouts" element={<WorkoutContainer handleDelete={handleDelete} workout={workout}/>}></Route>
           </Routes>
-    </Router>
+      </Router>
   );
 }
 

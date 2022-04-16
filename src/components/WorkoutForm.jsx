@@ -1,18 +1,21 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
-const WorkoutForm = ({formData, handleChange, handleSubmit}) => {
-  // const [formData, setFormData] = useState({
-  //     name:'',
-  //     muscle:'',
-  //     image:'',
-  //     description:''
-  // })
+const WorkoutForm = ({formData, handleChange, baseURL}) => {
   
-  // const handleChange = (e) => {
-  //   setFormData({...formData, [e.target.name]: e.target.value})
-  // }
-  
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    fetch(baseURL + "/workouts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(r => r.json())
+    .then(console.log(formData))
+  }  
   return (
     <div>
       <form onSubmit={handleSubmit}style={{display:"flex", flexDirection:"column", width:"400px", margin:"auto"}}>

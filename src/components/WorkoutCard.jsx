@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const WorkoutCard = ({workout}) => {
+const WorkoutCard = ({workout, handleDelete}) => {
   const classes = useStyles();
 
   return (
@@ -53,9 +53,9 @@ const WorkoutCard = ({workout}) => {
                 </Typography>
               </Grid>
               <Grid item>
-                <ButtonBase variant="body2" style={{ cursor: 'pointer' }}>
+                <button onClick={() => handleDelete(workout)}>
                   Remove
-                </ButtonBase>
+                </button>
               </Grid>
             </Grid>
           </Grid>
