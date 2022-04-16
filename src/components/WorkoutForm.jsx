@@ -16,7 +16,7 @@ const WorkoutForm = ({formData, handleChange, baseURL}) => {
   }  
   return (
     <div>
-      <form onSubmit={handleSubmit}style={{display:"flex", flexDirection:"column", width:"400px", margin:"auto"}}>
+      <form onSubmit={handleSubmit} style= {{display:"flex", flexDirection:"column", width:"400px", margin:"auto"}}>
         <label>Name</label>
         <input
         type="text"
