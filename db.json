@@ -20,6 +20,13 @@
       "muscle": "Back, Shoulders",
       "description": "With palms facing forward and shoulder width apart, pull up on bar until head is over bar",
       "image": "https://image.shutterstock.com/image-vector/man-doing-pull-ups-exercise-600w-1992470651.jpg"
+    },
+    {
+      "name": "Test",
+      "muscle": "test",
+      "image": "test",
+      "description": "test",
+      "id": 4
     }
   ]
 }
