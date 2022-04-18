@@ -1,10 +1,10 @@
 <h1 align="center"> Personal Workout Database Builder</h1>
 
-Personally, I do not exercise nor do I have a great knowledge of exercise and workouts. 
+Personally, I don't exercise often nor do I have a great knowledge of workouts or technique but I have been starting to try and improve my physical health by learning and doing more of both. I thought it would be helpful in order to track exercises I learn about so I could incorporate them in training and also use them as a tool to track my progress. Documenting them this way has been fun and super helpful when I want to plan a work out, I hope you can also use this as a motivational tool to improve physical health.
 
  
  <p align="center">
-  <img src="https://user-images.githubusercontent.com/91168142/151009832-ee61e1eb-713e-4e5e-897d-ed3ea6494c62.gif" alt="animated" />
+  <img src=https://makeagif.com/i/O5YER6 alt="animated" />
 </p>
 
 <h2 align="center"> Usage</h2>
