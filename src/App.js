@@ -3,7 +3,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import WorkoutContainer from "./components/WorkoutContainer";
 import WorkoutForm from "./components/WorkoutForm";
-import {BrowserRouter as Router, Routes, Route, useNavigate} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { baseURL } from "./Globals";
 
