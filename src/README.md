@@ -4,28 +4,32 @@ Personally, I don't exercise often nor do I have a great knowledge of workouts o
 
  
  <p align="center">
-  <img src=https://makeagif.com/i/O5YER6 alt="animated" />
+  <img src=https://user-images.githubusercontent.com/91168142/163875989-892ee9ec-c7ce-4716-b295-be541b5a3932.gif alt="animated" />
 </p>
+
 
 <h2 align="center"> Usage</h2>
 
-1. Clone the fork the github repo
+1. Fork the github repo
 
-2. Install JSON server globally if you havn't done so already by going into terminal and running:
+2. I used yarn to build this, but you can choose to start this with either $ npm start or $ yarn start
+
+3. Install JSON server globally if you havn't done so already by going into terminal and running:
 
    $ npm install -g json-server
-
-3. Change directory into phase-1-project/, be sure to be in the same directory as db.json (check by typing ls) and run:
  
-   $ json-server --watch db.json
+4. We would have to run the json server on a different port since we would be using the default 3000 server with our react app, you can change ports using
+ 
+   $ json-server -p 4000 db.json
 
-4. Refresh your index.html file and you can view and add expenses!
+4. Once the app and json server are running, you feel free to add a workout. 
 
 
 <h2 align="center"> Roadmap</h2>
 
-This will be more dynamic in the future with ability to edit and delete!
+
+Hoping to add more features like a favorites list and a the ability to edit workouts.
 
 
 <h2 align="center"> Authors and acknowledgment</h2>
-Lot of thanks to Enoch Griffith of Flatiron, you made a tough situation bearable for me.
+Always have to pay homage to Enoch Griffith for his great videos that are made available to us.
