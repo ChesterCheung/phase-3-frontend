@@ -9,6 +9,7 @@ import { baseURL } from "./Globals";
 
 
 const App = () => {
+// const navigate = useNavigate
 const [workout, setWorkout] = useState([])
 const [formData, setFormData] = useState({
   name:'',
@@ -16,6 +17,14 @@ const [formData, setFormData] = useState({
   image:'',
   description:''
 })
+
+useEffect(()=> {
+  fetch(baseURL + "/workouts")
+  .then(resp => resp.json())
+  .then(data => setWorkout(data))
+},[])
+
+// *** Event Listeners
 
 const handleChange = (e) => {
   setFormData({...formData, [e.target.name]: e.target.value})
@@ -32,18 +41,12 @@ const handleDelete = (workoutObj) =>{
 })
 }
 
-useEffect(()=> {
-  fetch(baseURL + "/workouts")
-  .then(resp => resp.json())
-  .then(data => setWorkout(data))
-},[])
-
   return (
       <Router>
         <Navbar/>
           <Routes>
             <Route path="/" element={<Home/>}></Route>
-            <Route path="/workouts/new" element={<WorkoutForm handleChange={handleChange} baseURL={baseURL} formData={formData}/>}></Route>
+            <Route path="/workouts/new" element={<WorkoutForm setWorkout={setWorkout} handleChange={handleChange} baseURL={baseURL} setFormData={setFormData}formData={formData}/>}></Route>
             <Route path="/workouts" element={<WorkoutContainer handleDelete={handleDelete} workout={workout}/>}></Route>
           </Routes>
       </Router>

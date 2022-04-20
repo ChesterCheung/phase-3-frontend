@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const WorkoutForm = ({formData, handleChange, baseURL}) => {
-  
+const WorkoutForm = ({formData, handleChange, setFormData, baseURL, setWorkout}) => {
+
+  const navigate = useNavigate()
   const handleSubmit = (e) =>{
     e.preventDefault()
     fetch(baseURL + "/workouts", {
@@ -13,7 +15,13 @@ const WorkoutForm = ({formData, handleChange, baseURL}) => {
     })
     .then(r => r.json())
     .then(console.log(formData))
+    setFormData({name:'', muscle:'', image:'', description:''})
+    navigate("/workouts")
+    fetch(baseURL + "/workouts")
+      .then(resp => resp.json())
+      .then(data => setWorkout(data))
   }  
+
   return (
     <div>
       <form onSubmit={handleSubmit} style= {{display:"flex", flexDirection:"column", width:"400px", margin:"auto"}}>
