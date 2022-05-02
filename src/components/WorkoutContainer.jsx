@@ -7,7 +7,7 @@ const WorkoutContainer = ({workout, handleDelete}) => {
     <div>
     {workoutCards}
     </div>
-  )
+  );
 }
 
 export default WorkoutContainer

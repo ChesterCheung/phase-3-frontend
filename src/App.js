@@ -9,9 +9,8 @@ import { baseURL } from "./Globals";
 
 
 const App = () => {
-// const navigate = useNavigate
-const [workout, setWorkout] = useState([])
-const [formData, setFormData] = useState({
+  const [workout, setWorkout] = useState([])
+  const [formData, setFormData] = useState({
   name:'',
   muscle:'',
   image:'',
@@ -33,12 +32,11 @@ const handleChange = (e) => {
 const handleDelete = (workoutObj) =>{
   fetch(`http://localhost:4000/workouts/${workoutObj.id}`,{
     method: "DELETE"
-})
-.then(()=>{
-  const filteredWorkouts = workout.filter(exercise => exercise.id !== workoutObj.id)
-  setWorkout(filteredWorkouts)
-  console.log(filteredWorkouts)
-})
+  })
+    .then(()=>{
+      const filteredWorkouts = workout.filter(exercise => exercise.id !== workoutObj.id)
+      setWorkout(filteredWorkouts)
+    })
 }
 
   return (
