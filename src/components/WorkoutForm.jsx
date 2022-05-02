@@ -1,8 +1,16 @@
 import React from 'react';
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-const WorkoutForm = ({formData, handleChange, setFormData, baseURL, setWorkout}) => {
+const WorkoutForm = ({baseURL, setWorkouts}) => {
   const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    name:'',
+    muscle:'',
+    image:'',
+    description:''
+  })
+
   const handleSubmit = (e) =>{
     e.preventDefault()
     fetch(baseURL + "/workouts", {
@@ -18,9 +26,14 @@ const WorkoutForm = ({formData, handleChange, setFormData, baseURL, setWorkout})
     navigate("/workouts")
     fetch(baseURL + "/workouts")
       .then(resp => resp.json())
-      .then(data => setWorkout(data))
+      .then(data => setWorkouts(data))
   }
-  
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value})
+    console.log(formData)
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit} style= {{display:"flex", flexDirection:"column", width:"400px", margin:"auto"}}>

@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const WorkoutCard = ({workout, handleDelete}) => {
+const WorkoutCard = ({workouts, handleDelete}) => {
   const classes = useStyles();
 
   return (
@@ -36,17 +36,17 @@ const WorkoutCard = ({workout, handleDelete}) => {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="complex" src={workout.image} />
+              <img className={classes.img} alt="complex" src={workouts.image} />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">{workout.name}</Typography>
-                <Typography variant="body2" gutterBottom>{workout.muscle}</Typography>
-                <Typography variant="body2" color="textSecondary">{workout.description}</Typography>
+                <Typography gutterBottom variant="subtitle1">{workouts.name}</Typography>
+                <Typography variant="body2" gutterBottom>{workouts.muscle}</Typography>
+                <Typography variant="body2" color="textSecondary">{workouts.description}</Typography>
               </Grid>
-              <Grid item ><button onClick={() => handleDelete(workout)}>Remove</button></Grid>
+              <Grid item ><button onClick={() => handleDelete(workouts)}>Remove</button></Grid>
             </Grid>
           </Grid>
         </Grid>

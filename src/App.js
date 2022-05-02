@@ -9,43 +9,32 @@ import { baseURL } from "./Globals";
 
 
 const App = () => {
-  const [workout, setWorkout] = useState([])
-  const [formData, setFormData] = useState({
-  name:'',
-  muscle:'',
-  image:'',
-  description:''
-})
+  const [workouts, setWorkouts] = useState([])
 
-useEffect(()=> {
-  fetch(baseURL + "/workouts")
-  .then(resp => resp.json())
-  .then(data => setWorkout(data))
-},[])
+  useEffect(()=> {
+    fetch(baseURL + "/workouts")
+      .then(resp => resp.json())
+      .then(data => setWorkouts(data))
+  },[])
 
-// *** Event Listeners
 
-const handleChange = (e) => {
-  setFormData({...formData, [e.target.name]: e.target.value})
-  console.log(formData)
-}
-const handleDelete = (workoutObj) =>{
-  fetch(`http://localhost:4000/workouts/${workoutObj.id}`,{
-    method: "DELETE"
-  })
-    .then(()=>{
-      const filteredWorkouts = workout.filter(exercise => exercise.id !== workoutObj.id)
-      setWorkout(filteredWorkouts)
+  const handleDelete = (workoutObj) =>{
+    fetch(`http://localhost:4000/workouts/${workoutObj.id}`,{
+      method: "DELETE"
     })
-}
+      .then(()=>{
+        const filteredWorkouts = workouts.filter(exercise => exercise.id !== workoutObj.id)
+        setWorkouts(filteredWorkouts)
+      })
+  }
 
   return (
       <Router>
         <Navbar/>
           <Routes>
             <Route path="/" element={<Home/>}></Route>
-            <Route path="/workouts/new" element={<WorkoutForm setWorkout={setWorkout} handleChange={handleChange} baseURL={baseURL} setFormData={setFormData}formData={formData}/>}></Route>
-            <Route path="/workouts" element={<WorkoutContainer handleDelete={handleDelete} workout={workout}/>}></Route>
+            <Route path="/workouts/new" element={<WorkoutForm setWorkouts={setWorkouts} baseURL={baseURL}/>}></Route>
+            <Route path="/workouts" element={<WorkoutContainer handleDelete={handleDelete} workouts={workouts}/>}></Route>
           </Routes>
       </Router>
   );
