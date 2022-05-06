@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-const WorkoutForm = ({baseURL, setWorkouts, workouts, addWorkout}) => {
+const WorkoutForm = ({baseURL, addWorkout}) => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name:'',
