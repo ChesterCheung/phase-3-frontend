@@ -17,6 +17,9 @@ const App = () => {
       .then(data => setWorkouts(data))
   },[])
 
+  const addWorkout = (workout) => {
+    setWorkouts([...workouts, workout])
+  }
 
   const handleDelete = (workoutObj) =>{
     fetch(`http://localhost:4000/workouts/${workoutObj.id}`,{
@@ -33,7 +36,7 @@ const App = () => {
         <Navbar/>
           <Routes>
             <Route path="/" element={<Home/>}></Route>
-            <Route path="/workouts/new" element={<WorkoutForm setWorkouts={setWorkouts} baseURL={baseURL}/>}></Route>
+            <Route path="/workouts/new" element={<WorkoutForm addWorkout={addWorkout} setWorkouts={setWorkouts} baseURL={baseURL}/>}></Route>
             <Route path="/workouts" element={<WorkoutContainer handleDelete={handleDelete} workouts={workouts}/>}></Route>
           </Routes>
       </Router>

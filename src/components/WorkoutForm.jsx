@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-const WorkoutForm = ({baseURL, setWorkouts}) => {
+const WorkoutForm = ({baseURL, setWorkouts, workouts, addWorkout}) => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name:'',
@@ -10,6 +10,8 @@ const WorkoutForm = ({baseURL, setWorkouts}) => {
     image:'',
     description:''
   })
+
+  
 
   const handleSubmit = (e) =>{
     e.preventDefault()
@@ -21,17 +23,13 @@ const WorkoutForm = ({baseURL, setWorkouts}) => {
       body: JSON.stringify(formData),
     })
       .then(r => r.json())
-      .then(console.log(formData))
+      .then((workout)=> addWorkout(workout))
     setFormData({name:'', muscle:'', image:'', description:''})
     navigate("/workouts")
-    fetch(baseURL + "/workouts")
-      .then(resp => resp.json())
-      .then(data => setWorkouts(data))
   }
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value})
-    console.log(formData)
   }
 
   return (
