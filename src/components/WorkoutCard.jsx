@@ -1,58 +1,22 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import React from 'react'
 
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    margin: 'auto',
-    maxWidth: 500,
-  },
-  image: {
-    width: 128,
-    height: 128,
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
-}));
+const styles ={
+    color: 'black',
+    fontSize: '20px',
+    border: '2px solid black'
+  }
 
-const WorkoutCard = ({workouts, handleDelete}) => {
-  const classes = useStyles();
-
+const WorkoutCard = ({workouts}) => {
+ const exerciseNames = workouts.exercises.map((e) => <ul>{e.name}: {e.instructions}</ul> )
   return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <Grid container spacing={2}>
-          <Grid item>
-            <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="complex" src={workouts.image} />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">{workouts.name}</Typography>
-                <Typography variant="body2" gutterBottom>{workouts.muscle}</Typography>
-                <Typography variant="body2" color="textSecondary">{workouts.description}</Typography>
-              </Grid>
-              <Grid item ><button onClick={() => handleDelete(workouts)}>Remove</button></Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Paper>
-    </div>
-  );
+    <div>
+        <h4 style={styles} >Workout: {workouts.name}</h4>
+        <p style= {{fontSize: '15px'}}>Description: {workouts.description}</p>
+        <p style= {{fontSize: '15px'}}>Exercises:{exerciseNames}</p>
+        
+    </div> 
+  )
 }
 
 export default WorkoutCard
