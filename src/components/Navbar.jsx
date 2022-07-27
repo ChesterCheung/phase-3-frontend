@@ -26,7 +26,8 @@ const Navbar = () => {
         <Toolbar>
           <Typography variant="h6" className={classes.title}>Personal Workout Database</Typography>
           <Button color="inherit" component={Link} to="/">Home</Button>
-          <Button color="inherit" component={Link} to="/workouts/new">Create Workout</Button>
+          <Button color="inherit" component={Link} to="/exercises/new">Create Exercise</Button>
+          <Button color="inherit" component={Link} to="/exercises">View Exercises</Button>
           <Button color="inherit" component={Link} to="/workouts">View Workouts</Button>
         </Toolbar>
       </AppBar>
