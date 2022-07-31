@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import EditExercise from './EditExercise';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,31 +28,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ExerciseCard = ({exercises, handleDelete}) => {
+const ExerciseCard = ({exercises, handleDelete, updateExercise}) => {
   const classes = useStyles();
+  const [isEditing, setIsEditing] = useState(false)
 
   return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <Grid container spacing={2}>
-          <Grid item>
-            <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="complex" src={exercises.url} />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">{exercises.name}</Typography>
-                <Typography variant="body2" gutterBottom>{exercises.muscle_group}</Typography>
-                <Typography variant="body2" color="textSecondary">{exercises.instructions}</Typography>
-              </Grid>
-              <Grid item ><button onClick={() => handleDelete(exercises)}>Remove</button></Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Paper>
-    </div>
+    <div>
+      {isEditing ? (
+        <EditExercise setIsEditing={setIsEditing} isEditing={isEditing}exercises={exercises} updateExercise={updateExercise}/>
+      ) : (
+            <div className={classes.root}>
+              <Paper className={classes.paper}>
+                <Grid container spacing={2}>
+                  <Grid item>
+                    <ButtonBase className={classes.image}>
+                      <img className={classes.img} alt="complex" src={exercises.url} />
+                    </ButtonBase>
+                  </Grid>
+                  <Grid item xs={12} sm container>
+                    <Grid item xs container direction="column" spacing={2}>
+                      <Grid item xs>
+                        <Typography gutterBottom variant="subtitle1">{exercises.name}</Typography>
+                        <Typography variant="body2" color="textSecondary">{exercises.instructions}</Typography>
+                      </Grid>
+                      <Grid item ><button onClick={() => handleDelete(exercises)}>Remove</button></Grid>
+                      <Grid item ><button onClick={() => setIsEditing((isEditing) => !isEditing)}>Edit</button></Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </div> 
+          )
+    }</div>
   );
 }
 

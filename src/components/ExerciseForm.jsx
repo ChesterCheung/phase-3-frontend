@@ -1,18 +1,17 @@
 import React from 'react';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import WorkoutForm from './WorkoutForm';
 
-const ExerciseForm = ({baseURL, addExercise, workouts,}) => {
+const ExerciseForm = ({baseURL, addExercise, workouts, addWorkout, setWorkouts}) => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name:'',
-    muscle_group:'',
     url:'',
     instructions:'',
-    workout_id:''
+    workout_id:'',
+    favorite: false
   })
-
-  
 
   const handleSubmit = (e) =>{
     e.preventDefault()
@@ -25,7 +24,7 @@ const ExerciseForm = ({baseURL, addExercise, workouts,}) => {
     })
       .then(r => r.json())
       .then((exercise)=> addExercise(exercise))
-    setFormData({name:'', muscle_group:'', url:'', instructions:'', workout_id:''})
+    setFormData({name:'', url:'', instructions:'', workout_id:''})
     navigate("/exercises")
   }
 
@@ -42,14 +41,6 @@ const ExerciseForm = ({baseURL, addExercise, workouts,}) => {
           name="name"
           aria-label="name"
           value={formData.name}
-          onChange={handleChange}>
-        </input>
-        <label>Muscle</label>
-        <input
-          type="text"
-          name="muscle_group"
-          aria-label="muscle_group"
-          value={formData.muscle_group}
           onChange={handleChange}>
         </input>
         <label>Image URL</label>
@@ -74,6 +65,9 @@ const ExerciseForm = ({baseURL, addExercise, workouts,}) => {
         </select>
         <input type="submit" value="Submit" />
       </form> 
+      <div>
+        <WorkoutForm setWorkouts={setWorkouts} addWorkout={addWorkout}/>
+      </div>
     </div>
   )
 }
